@@ -1,0 +1,24 @@
+<div class="chat-container">
+  <h2>TVBot TV Show Recommendation Chat</h2>
+  <form (ngSubmit)="getRecommendations()">
+    <label for="prompt">What kind of shows do you like?</label>
+    <input id="prompt" name="prompt" [(ngModel)]="prompt" [disabled]="loading" required class="chat-input"/>
+    <button type="submit" [disabled]="loading || !prompt">Get Recommendations</button>
+  </form>
+
+  <div *ngIf="loading" class="loading">Loading recommendations...</div>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div *ngIf="response">
+    <h3>TVBot Says:</h3>
+    <p class="summary">{{ response.summary }}</p>
+    <h4>Exact TV Show Details:</h4>
+    <ul>
+      <li *ngFor="let show of response.shows">
+        <strong>{{ show.title }}</strong>
+        <em>({{ show.genre }})</em>: {{ show.description }}
+      </li>
+    </ul>
+  </div>
+</div>

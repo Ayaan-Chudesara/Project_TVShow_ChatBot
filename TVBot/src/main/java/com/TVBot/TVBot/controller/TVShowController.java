@@ -1,23 +1,29 @@
 package com.TVBot.TVBot.controller;
 
+import com.TVBot.TVBot.dto.RecommendationResponse;
 import com.TVBot.TVBot.dto.TVShowDto;
 import com.TVBot.TVBot.model.TVShow;
 import com.TVBot.TVBot.service.EmbeddingService;
+import com.TVBot.TVBot.service.RecommendationFormatterService;
 import com.TVBot.TVBot.service.TVShowService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController  // Use RestController for JSON API
 @RequestMapping("/api/tvshows")
 public class TVShowController {
 
     private final TVShowService service;
     private final EmbeddingService embeddingService;
+    private final RecommendationFormatterService formatterService;
 
-    public TVShowController(TVShowService service, EmbeddingService embeddingService) {
+    public TVShowController(TVShowService service, EmbeddingService embeddingService, RecommendationFormatterService formatterService) {
+        this.formatterService = formatterService;
         this.embeddingService = embeddingService;
         this.service = service;
     }
@@ -52,12 +58,18 @@ public class TVShowController {
     }
 
     @PostMapping("/recommend")
-    public ResponseEntity<List<TVShow>> recommend(@RequestBody Map<String, String> body, @RequestParam(defaultValue = "5") int count){
+    public ResponseEntity<RecommendationResponse> recommend(@RequestBody Map<String, String> body, @RequestParam(defaultValue = "5") int count){
         try {
             String prompt = body.get("prompt");
             float[] promptEmbedding = embeddingService.generateEmbedding(prompt);
             List<TVShow> similarShow = service.findTopSimilarTVShows(promptEmbedding,count);
-            return ResponseEntity.ok(similarShow);
+
+            String summary = formatterService.formatRecommendations(similarShow, prompt);
+
+            RecommendationResponse response = new RecommendationResponse();
+            response.setSummary(summary);
+            response.setShows(similarShow);
+            return ResponseEntity.ok(response);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(500).build();
