@@ -54,9 +54,9 @@ Install Ollama
 Run and pull required models:
 
 
-### ollama pull llama3
-### ollama pull nomic-embed-text
-### ollama serve
+ ollama pull llama3
+ ollama pull nomic-embed-text
+ ollama serve
 
 ## 2. Database (Supabase Postgres)
 Create a Supabase project
@@ -68,8 +68,8 @@ Set up pgvector extension (Supabase comes pre-loaded)
 ## 3. Backend (Spring Boot + Spring AI)
 a. Clone and Configure
 
-### git clone https://github.com/Ayaan-Chudesara/Project_TVShow_ChatBot.git
-### cd tvbot
+git clone https://github.com/Ayaan-Chudesara/Project_TVShow_ChatBot.git
+cd tvbot
 
 
 In src/main/resources/application.properties, set:
@@ -111,14 +111,14 @@ xml
 
  c. Build & Start
 
-### mvn clean install
-### mvn spring-boot:run Or, use your IDE's run config
+ mvn clean install
+ mvn spring-boot:run Or, use your IDE's run config
 
 ## 4. Frontend (Angular 16)
 
-### cd tvbot-frontend Or whatever your frontend dir is called
-### npm install
-### ng serve
+ cd tvbot-frontend Or whatever your frontend dir is called
+ npm install
+ ng serve
 Open http://localhost:4200 in your browser.
 
 Chat UI will POST to your backend (Spring Boot, default port 8080).
