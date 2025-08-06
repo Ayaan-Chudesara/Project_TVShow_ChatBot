@@ -2,6 +2,7 @@
 A fully private AI-powered web chatbot that recommends TV shows using open-source LLMs (via Ollama + Spring AI), vector search, and a fast Angular 16 frontend.
 No cloud APIs required. Runs on your hardware with privacy and total control.
 
+
 # 🛠️ Tech Stack
 ## Backend:
 
@@ -31,6 +32,7 @@ pgvector Java client
 
 Postman/cURL (for API testing)
 
+
 # 🌟 Features
 Chatbot UI for friendly, contextual TV show recommendations
 
@@ -43,6 +45,7 @@ PostgreSQL/pgvector for fast similarity search & storage
 Lightweight, responsive Angular 16 frontend
 
 Full privacy: No third-party or paid AI APIs, all processing happens locally
+
 
 # 🚀 Quick Setup
 ## 1. Ollama & Models
@@ -64,11 +67,12 @@ Set up pgvector extension (Supabase comes pre-loaded)
 
 ## 3. Backend (Spring Boot + Spring AI)
 a. Clone and Configure
-text
-git clone https://github.com/your-username/tvbot.git
-cd tvbot
-In src/main/resources/application.properties, set:
 
+### git clone https://github.com/Ayaan-Chudesara/Project_TVShow_ChatBot.git
+### cd tvbot
+
+
+In src/main/resources/application.properties, set:
 
 spring.datasource.url=<your supabase db url>
 spring.datasource.username=<your db user>
