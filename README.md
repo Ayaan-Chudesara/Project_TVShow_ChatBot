@@ -2,8 +2,8 @@
 A fully private AI-powered web chatbot that recommends TV shows using open-source LLMs (via Ollama + Spring AI), vector search, and a fast Angular 16 frontend.
 No cloud APIs required. Runs on your hardware with privacy and total control.
 
-🛠️ Tech Stack
-Backend:
+# 🛠️ Tech Stack
+## Backend:
 
 Java 17
 
@@ -17,13 +17,13 @@ PostgreSQL (hosted via Supabase, includes pgvector extension)
 
 Ollama (for LLM & embedding models; serving locally)
 
-Frontend:
+## Frontend:
 
 Angular 16 (TypeScript)
 
 HTML5/CSS3
 
-Others:
+## Others:
 
 Lombok
 
@@ -31,7 +31,7 @@ pgvector Java client
 
 Postman/cURL (for API testing)
 
-🌟 Features
+# 🌟 Features
 Chatbot UI for friendly, contextual TV show recommendations
 
 Open-source LLM (llama3 or similar, via Ollama) for response summarization
@@ -44,32 +44,32 @@ Lightweight, responsive Angular 16 frontend
 
 Full privacy: No third-party or paid AI APIs, all processing happens locally
 
-🚀 Quick Setup
-1. Ollama & Models
+# 🚀 Quick Setup
+## 1. Ollama & Models
 Install Ollama
 
 Run and pull required models:
 
-text
+
 ### ollama pull llama3
 ### ollama pull nomic-embed-text
 ### ollama serve
 
-2. Database (Supabase Postgres)
+## 2. Database (Supabase Postgres)
 Create a Supabase project
 
 Get your DB connection info (URL, user, password)
 
 Set up pgvector extension (Supabase comes pre-loaded)
 
-3. Backend (Spring Boot + Spring AI)
+## 3. Backend (Spring Boot + Spring AI)
 a. Clone and Configure
 text
 git clone https://github.com/your-username/tvbot.git
 cd tvbot
 In src/main/resources/application.properties, set:
 
-text
+
 spring.datasource.url=<your supabase db url>
 spring.datasource.username=<your db user>
 spring.datasource.password=<your db password>
@@ -79,7 +79,6 @@ spring.ai.ollama.chat.options.model=llama3
 spring.ai.ollama.chat.base-url=http://localhost:11434
 Pool size tip for Supabase:
 
-text
 spring.datasource.hikari.maximum-pool-size=5
 
 b. Maven setup (in pom.xml):
@@ -106,14 +105,14 @@ xml
   <!-- ... -->
 </dependencies>
 
-c. Build & Start
-text
-mvn clean install
-mvn spring-boot:run
-# Or, use your IDE's run config
-4. Frontend (Angular 16)
-text
-### cd tvbot-frontend   # Or whatever your frontend dir is called
+ c. Build & Start
+
+### mvn clean install
+### mvn spring-boot:run Or, use your IDE's run config
+
+## 4. Frontend (Angular 16)
+
+### cd tvbot-frontend Or whatever your frontend dir is called
 ### npm install
 ### ng serve
 Open http://localhost:4200 in your browser.
