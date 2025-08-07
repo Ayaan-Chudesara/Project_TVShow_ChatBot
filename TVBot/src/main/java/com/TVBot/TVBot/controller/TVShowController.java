@@ -58,7 +58,7 @@ public class TVShowController {
     }
 
     @PostMapping("/recommend")
-    public ResponseEntity<RecommendationResponse> recommend(@RequestBody Map<String, String> body, @RequestParam(defaultValue = "5") int count){
+    public ResponseEntity<RecommendationResponse> recommend(@RequestBody Map<String, String> body, @RequestParam(defaultValue = "1") int count){
         try {
             String prompt = body.get("prompt");
             float[] promptEmbedding = embeddingService.generateEmbedding(prompt);

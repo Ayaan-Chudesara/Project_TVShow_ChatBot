@@ -35,7 +35,7 @@ prompt = '';
     const body = { prompt: this.prompt };
 
     this.http.post<RecommendationResponse>(
-      'http://localhost:8080/api/tvshows/recommend?count=5', // Adjust port if needed
+      'http://localhost:8080/api/tvshows/recommend?count=1', // Adjust port if needed
       body
     ).subscribe({
       next: (res) => {
